@@ -8,7 +8,7 @@ namespace TSP
 {
     public class ChristofidesTsp : ITspAlgorithm
     {
-        public int Calculate(Graph inputGraph)
+        public double Calculate(Graph inputGraph)
         {
             throw new NotImplementedException();
         }

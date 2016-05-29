@@ -8,7 +8,12 @@ namespace TSP
 {
     public class Graph
     {
-        public SortedSet<Edge> Edges { get; set; }
+        public List<Edge> Edges { get; set; }
+
+        public Graph(List<Edge> edge)
+        {
+            Edges = edge;
+        }
 
         public Graph(int[] vertices, int[] neighboursCount)
         {

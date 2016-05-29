@@ -10,6 +10,23 @@ namespace TSP
     {
         static void Main(string[] args)
         {
+
+            var list = new List<Edge>()
+            {
+                new Edge(){ From=0,To=1,Weight=0.1 },
+                new Edge(){ From=0,To=2,Weight=0.1 },
+                new Edge(){ From=0,To=3,Weight=0.1 },
+                new Edge(){ From=1,To=2,Weight=0.3 },
+                new Edge(){ From=1,To=3,Weight=0.3 },
+                new Edge(){ From=2,To=3,Weight=0.3 }
+            };
+
+            var tmp = new Graph(list);
+            var Kruskal = new KruskalAlgorithm();
+         
+            var result = Kruskal.CalculateMst(tmp);
+            var a = 1;
+
         }
     }
 }
