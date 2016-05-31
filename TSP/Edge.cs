@@ -15,5 +15,16 @@ namespace TSP
             this.Weight = Weight;
         }
 
+        public Edge DeepCopy()
+        {
+            return new Edge
+            {
+                From = this.From,
+                To = this.To,
+                Weight = this.Weight,
+                
+            };
+        }
+
     }
 }

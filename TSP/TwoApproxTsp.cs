@@ -23,7 +23,7 @@ namespace TSP
             foreach (var edge in mst.Edges)
             {
                 duplicatedEdgesList.Add(edge);
-                duplicatedEdgesList.Add(edge);
+                duplicatedEdgesList.Add(new Edge() { To = edge.From, From = edge.To, Weight = edge.Weight });
             }
             var duplicatedEdgesGraph = new Graph {Edges = new List<Edge>(duplicatedEdgesList)};
             var eulerPath = eulerPathFinder.FindPath(duplicatedEdgesGraph);

@@ -23,8 +23,18 @@ namespace TSP
 
             var tmp = new Graph(list);
             var Kruskal = new KruskalAlgorithm();
-         
+            var Euler = new EulerPathFinder();
             var result = Kruskal.CalculateMst(tmp);
+
+            var duplicatedEdgesList = new List<Edge>();
+            foreach (var edge in result.Edges)
+            {
+                duplicatedEdgesList.Add(edge);
+                duplicatedEdgesList.Add(new Edge() { To = edge.From, From = edge.To, Weight = edge.Weight});
+            }
+            var duplicatedEdgesGraph = new Graph { Edges = new List<Edge>(duplicatedEdgesList) };
+            var eulerPath = Euler.FindPath(duplicatedEdgesGraph);
+
             var a = 1;
 
         }
