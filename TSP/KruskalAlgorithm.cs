@@ -14,7 +14,7 @@ namespace TSP
             int[] sets = new int[graph.Edges.Count];
             List<Edge> Result = new List<Edge>();
             int processedEdges = 0;
-            foreach (var edge in graph.Edges)
+            foreach (var edge in graph.Edges.OrderBy(o=>o.Weight))
             {
 
                 if (processedEdges == graph.Edges.Count - 1)
