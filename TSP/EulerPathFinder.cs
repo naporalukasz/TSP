@@ -11,7 +11,6 @@ namespace TSP
 
         public Graph FindPath(Graph graph)
         {
-            var EdgeList = graph.Edges;
             tmpEdgeList = graph.Edges.Select(s => s.DeepCopy()).ToList();
             Find(0);
             return new Graph(wynik);

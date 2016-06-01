@@ -10,8 +10,7 @@ namespace TSP
         public Graph CalculateMst(Graph graph)
         {
             
-            var Span = 0.0;
-
+            var span = 0.0;
             int[] sets = new int[graph.Edges.Count];
             List<Edge> Result = new List<Edge>();
             int processedEdges = 0;
@@ -24,7 +23,7 @@ namespace TSP
                 if (sets[edge.From] == 0 || sets[edge.From] != sets[edge.To])
                 {
                     Result.Add(edge);
-                    Span += edge.Weight;
+                    span += edge.Weight;
                     processedEdges++;
 
                     if (sets[edge.From] != 0 || sets[edge.To] != 0)

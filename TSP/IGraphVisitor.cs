@@ -2,6 +2,6 @@
 {
     public interface IGraphVisitor
     {
-        Graph Visit(Graph graph);
+        Graph Visit( Graph eulerGraph);
     }
 }
