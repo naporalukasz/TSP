@@ -25,7 +25,7 @@ namespace TSP
         {
             var mst = kruskalAlgorithm.CalculateMst(inputGraph);
 
-            var matching = minimalMatching.FindMinimalMatching(mst);
+            var matching = minimalMatching.FindMinimalMatching(mst, inputGraph);
 
 
            

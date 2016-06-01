@@ -24,11 +24,16 @@ namespace TSP
             var list2 = new List<Edge>()
             {
                 new Edge(){ From=0,To=2,Weight=1 },
-                new Edge(){ From=0,To=3,Weight=2 },
                 new Edge(){ From=1,To=2,Weight=1 },
-                new Edge(){ From=1,To=4,Weight=2 },
+                new Edge(){ From=2,To=4,Weight=1 },
                 new Edge(){ From=2,To=3,Weight=1 },
-                new Edge(){ From=2,To=4,Weight=1 }
+                new Edge(){ From=0,To=1,Weight=1 },
+                new Edge(){ From=0,To=3,Weight=2 },
+                new Edge(){ From=0,To=4,Weight=1 },             
+                new Edge(){ From=1,To=3,Weight=1 },
+                new Edge(){ From=1,To=4,Weight=2 },
+                new Edge(){ From=2,To=3,Weight=1 },               
+                new Edge(){ From=3,To=4,Weight=1 },
             };
 
             var tmp = new Graph(list2,5);
@@ -37,7 +42,7 @@ namespace TSP
             var MinimalMatching = new MinimalMatching();
             var kruskal = Kruskal.CalculateMst(tmp);
 
-            var minimal = MinimalMatching.FindMinimalMatching(kruskal);
+            var minimal = MinimalMatching.FindMinimalMatching(kruskal, tmp);
 
             var duplicatedEdgesList = new List<Edge>();
             foreach (var edge in kruskal.Edges)

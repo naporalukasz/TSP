@@ -8,7 +8,7 @@ namespace TSP
 {
     public class MinimalMatching : IMinimalMatching
     {
-        public Graph FindMinimalMatching(Graph kruskalGraph)
+        public Graph FindMinimalMatching(Graph kruskalGraph,Graph inputGraph)
         {
             var degreeList = new List<Dictionary<int, int>>();
          
@@ -28,7 +28,7 @@ namespace TSP
             for (int i = 0; i < verticesCount.Length; i++)
             {
                 if(verticesCount[i]%2==1)
-                    resultGraph.AddRange(kruskalGraph.Edges.Where(x=>x.From==i || x.To==i).Select(s=>s.DeepCopy()));
+                    resultGraph.AddRange(inputGraph.Edges.Where(x=>x.From==i && verticesCount[x.To] % 2 == 1).Select(s=>s.DeepCopy()));
             }
 
             //TODO: Stworzenie podgrafu z grafu obecnego i wejściowego
