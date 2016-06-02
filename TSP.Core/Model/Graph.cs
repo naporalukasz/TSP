@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace TSP
+namespace TSP.Core.Model
 {
     public class Graph
     {
@@ -16,7 +12,7 @@ namespace TSP
             Edges = edge;
         }
 
-        public Graph(List<Edge> edge,int verticesCount)
+        public Graph(List<Edge> edge, int verticesCount)
         {
             Edges = edge;
             VerticesCount = verticesCount;

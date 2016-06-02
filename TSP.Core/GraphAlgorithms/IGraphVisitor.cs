@@ -1,4 +1,6 @@
-﻿namespace TSP
+﻿using TSP.Core.Model;
+
+namespace TSP.Core.GraphAlgorithms
 {
     public interface IGraphVisitor
     {

@@ -1,20 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{07EB596A-D856-439E-BEBC-C97C06837BC9}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{7F573D14-0862-424B-B4FF-BEFA8A781EC4}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TSP</RootNamespace>
-    <AssemblyName>TSP</AssemblyName>
+    <RootNamespace>TSP.Core</RootNamespace>
+    <AssemblyName>TSP.Core</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -39,20 +37,26 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Tsp\ChristofidesTsp.cs" />
+    <Compile Include="Model\Edge.cs" />
+    <Compile Include="Helpers\EdgeComparer.cs" />
+    <Compile Include="GraphAlgorithms\EulerPathFinder.cs" />
+    <Compile Include="Helpers\FileProcessing.cs" />
+    <Compile Include="Model\Graph.cs" />
+    <Compile Include="GraphAlgorithms\GraphVisitor.cs" />
+    <Compile Include="GraphAlgorithms\IEulerPathFinder.cs" />
+    <Compile Include="GraphAlgorithms\IGraphVisitor.cs" />
+    <Compile Include="GraphAlgorithms\IKruskalAlgorithm.cs" />
+    <Compile Include="GraphAlgorithms\IMinimalMatching.cs" />
+    <Compile Include="Tsp\ITspAlgorithm.cs" />
+    <Compile Include="GraphAlgorithms\KruskalAlgorithm.cs" />
+    <Compile Include="GraphAlgorithms\MinimalMatching.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\TSP.Core\TSP.Core.csproj">
-      <Project>{7f573d14-0862-424b-b4ff-befa8a781ec4}</Project>
-      <Name>TSP.Core</Name>
-    </ProjectReference>
+    <Compile Include="Tsp\TwoApproxTsp.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

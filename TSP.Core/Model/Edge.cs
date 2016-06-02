@@ -1,4 +1,4 @@
-namespace TSP
+namespace TSP.Core.Model
 {
     public class Edge
     {

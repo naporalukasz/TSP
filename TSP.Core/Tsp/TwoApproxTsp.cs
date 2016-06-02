@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using TSP.Core.GraphAlgorithms;
+using TSP.Core.Model;
 
-namespace TSP
+namespace TSP.Core.Tsp
 {
     public class TwoApproxTsp : ITspAlgorithm
     {
@@ -22,10 +24,10 @@ namespace TSP
             var duplicatedEdgesList = new List<Edge>();
             foreach (var edge in mst.Edges)
             {
-                duplicatedEdgesList.Add(edge);
-                duplicatedEdgesList.Add(new Edge() { To = edge.From, From = edge.To, Weight = edge.Weight });
+                duplicatedEdgesList.Add(edge.DeepCopy());
+                duplicatedEdgesList.Add(new Edge { To = edge.From, From = edge.To, Weight = edge.Weight });
             }
-            var duplicatedEdgesGraph = new Graph {Edges = new List<Edge>(duplicatedEdgesList)};
+            var duplicatedEdgesGraph = new Graph { Edges = new List<Edge>(duplicatedEdgesList) };
             var eulerPath = eulerPathFinder.FindPath(duplicatedEdgesGraph);
             var tspPath = graphVisitor.Visit(eulerPath);
             var weightSum = tspPath.Edges.Sum(x => x.Weight);

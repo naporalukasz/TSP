@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using System;
+using TSP.Core.Model;
 
-
-namespace TSP
+namespace TSP.Core.GraphAlgorithms
 {
     public class KruskalAlgorithm : IKruskalAlgorithm
     {

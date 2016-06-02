@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSP", "TSP\TSP.csproj", "{07EB596A-D856-439E-BEBC-C97C06837BC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSP.Core", "TSP.Core\TSP.Core.csproj", "{7F573D14-0862-424B-B4FF-BEFA8A781EC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSP.Tests", "TSP.Tests\TSP.Tests.csproj", "{18E15931-FDBF-4C51-8C6F-D303FD4D2AA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{07EB596A-D856-439E-BEBC-C97C06837BC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07EB596A-D856-439E-BEBC-C97C06837BC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07EB596A-D856-439E-BEBC-C97C06837BC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F573D14-0862-424B-B4FF-BEFA8A781EC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F573D14-0862-424B-B4FF-BEFA8A781EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F573D14-0862-424B-B4FF-BEFA8A781EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F573D14-0862-424B-B4FF-BEFA8A781EC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18E15931-FDBF-4C51-8C6F-D303FD4D2AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18E15931-FDBF-4C51-8C6F-D303FD4D2AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18E15931-FDBF-4C51-8C6F-D303FD4D2AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18E15931-FDBF-4C51-8C6F-D303FD4D2AA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

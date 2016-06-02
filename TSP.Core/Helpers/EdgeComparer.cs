@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using TSP.Core.Model;
 
-namespace TSP
+namespace TSP.Core.Helpers
 {
     public class EdgeComparer : IComparer<Edge>
     {

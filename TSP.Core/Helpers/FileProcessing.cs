@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using TSP.Core.Model;
 
 /// <summary>
 /// Przestrzeń nazw dla pliku wejściowego oraz jego przetwarzania.
 /// </summary>
-namespace TSP
+namespace TSP.Core.Helpers
 {
     /// <summary>
     /// Statyczna klasa parsująca plik znajdujący się w podanej ścieżce, a następnie zamieniająca go na obiekt grafu

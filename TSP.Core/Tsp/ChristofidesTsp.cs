@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TSP.Core.GraphAlgorithms;
+using TSP.Core.Model;
 
-namespace TSP
+namespace TSP.Core.Tsp
 {
     public class ChristofidesTsp : ITspAlgorithm
     {
