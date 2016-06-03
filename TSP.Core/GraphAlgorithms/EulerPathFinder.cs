@@ -8,6 +8,7 @@ namespace TSP.Core.GraphAlgorithms
     {
         private readonly List<Edge> result = new List<Edge>();
         private List<Edge> tmpEdgeList = new List<Edge>();
+        private List<int> ints = new List<int>();
 
         public Graph FindPath(Graph graph)
         {
@@ -18,13 +19,33 @@ namespace TSP.Core.GraphAlgorithms
 
         private void Find(int v)
         {
-            var currentEdges = new Stack<Edge>(tmpEdgeList.Where(w => w.From == v).Select(s => s.DeepCopy()).ToList());
-            while (currentEdges.Count != 0)
+            var forward = new Stack<Edge>();
+            var backtrack = new Stack<Edge>();
+            var edge = tmpEdgeList.Where(w => w.From == v).Select(s => s.DeepCopy()).FirstOrDefault();
+            while (edge != null)
             {
-                var edge = currentEdges.Pop();
                 tmpEdgeList.Remove(tmpEdgeList.Find(e => e.From == edge.From && e.To == edge.To));
-                tmpEdgeList.Remove(tmpEdgeList.Find(e => e.To == edge.From && e.From == edge.To));
-                Find(edge.To);
+                forward.Push(edge);
+                edge = tmpEdgeList.Where(w => w.From == edge.To).Select(s => s.DeepCopy()).FirstOrDefault();
+            }
+
+
+            while (forward.Count != 0)
+            {
+                edge = forward.Pop();
+                backtrack.Push(edge);
+                edge = tmpEdgeList.Where(w => w.From == edge.From).Select(s => s.DeepCopy()).FirstOrDefault();
+                while (edge != null)
+                {
+                    tmpEdgeList.Remove(tmpEdgeList.Find(e => e.From == edge.From && e.To == edge.To));
+                    forward.Push(edge);
+                    edge = tmpEdgeList.Where(w => w.From == edge.To).Select(s => s.DeepCopy()).FirstOrDefault();
+                }
+            }
+
+            while (backtrack.Count != 0)
+            {
+                edge = backtrack.Pop();
                 result.Add(edge);
             }
         }
