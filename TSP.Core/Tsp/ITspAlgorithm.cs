@@ -4,6 +4,6 @@ namespace TSP.Core.Tsp
 {
     public interface ITspAlgorithm
     {
-        double Calculate(Graph inputGraph);
+        Graph Calculate(Graph inputGraph, out double cost);
     }
 }

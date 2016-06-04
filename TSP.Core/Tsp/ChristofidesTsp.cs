@@ -28,5 +28,10 @@ namespace TSP.Core.Tsp
            
             return 0;
         }
+
+        public Graph Calculate(Graph inputGraph, out double cost)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

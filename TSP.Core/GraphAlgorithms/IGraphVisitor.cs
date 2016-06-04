@@ -4,6 +4,6 @@ namespace TSP.Core.GraphAlgorithms
 {
     public interface IGraphVisitor
     {
-        Graph Visit( Graph eulerGraph);
+        Graph Visit(Graph originalGraph, Graph eulerGraph);
     }
 }

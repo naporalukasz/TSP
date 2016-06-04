@@ -18,7 +18,7 @@ namespace TSP.Core.Tsp
             this.graphVisitor = graphVisitor;
         }
 
-        public double Calculate(Graph inputGraph)
+        public Graph Calculate(Graph inputGraph, out double cost)
         {
             var mst = kruskalAlgorithm.CalculateMst(inputGraph);
             var duplicatedEdgesList = new List<Edge>();
@@ -29,9 +29,9 @@ namespace TSP.Core.Tsp
             }
             var duplicatedEdgesGraph = new Graph { Edges = new List<Edge>(duplicatedEdgesList) };
             var eulerPath = eulerPathFinder.FindPath(duplicatedEdgesGraph);
-            var tspPath = graphVisitor.Visit(eulerPath);
-            var weightSum = tspPath.Edges.Sum(x => x.Weight);
-            return weightSum;
+            var tspPath = graphVisitor.Visit(inputGraph, eulerPath);
+            cost = tspPath.Edges.Sum(x => x.Weight);
+            return tspPath;
         }
 
     }
