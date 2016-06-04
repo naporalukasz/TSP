@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EulerPathFinderTests.cs" />
+    <Compile Include="FileProcessingTests.cs" />
     <Compile Include="KruskalTests.cs" />
     <Compile Include="MinimalMatchingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

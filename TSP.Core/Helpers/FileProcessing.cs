@@ -4,30 +4,18 @@ using System.IO;
 using System.Linq;
 using TSP.Core.Model;
 
-/// <summary>
-/// Przestrzeń nazw dla pliku wejściowego oraz jego przetwarzania.
-/// </summary>
 namespace TSP.Core.Helpers
 {
-    /// <summary>
-    /// Statyczna klasa parsująca plik znajdujący się w podanej ścieżce, a następnie zamieniająca go na obiekt grafu
-    /// </summary>
-    static class FileProcessing
+    public static class FileProcessing
     {
-        /// <summary>
-        /// Statyczna metoda, której zadaniem jest odczytanie grafu z podanej ścieżki do pliku tekstowego, sparsowanie tekstu, oraz na jego podstawie stworzenie i zwrócenie gotowej instancji grafu.
-        /// </summary>
-        /// <param name="path">Ścieżka do pliku z danymi.</param>
-        /// <returns>Wynikowy graf utworzony na podstawie danych z pliku tekstowego.</returns>
-        public static Graph ReadFile(string path)
+        public static Graph ReadGraphFromFile(string path)
         {
             try
             {
                 using (var sr = new StreamReader(path))
                 {
-                    var vertices = new List<int>();
-                    var neighborsCount = new List<int>();
-
+                    var edges = new List<Edge>();
+                    var maxVertexIndex = 0;
                     string line;
 
                     if (!sr.EndOfStream)
@@ -35,12 +23,17 @@ namespace TSP.Core.Helpers
 
                     while ((line = sr.ReadLine()) != null)
                     {
-                        vertices.AddRange(line.Split(',').Select(Int32.Parse).ToList());
-                        neighborsCount.Add(vertices.Count);
+                        var edgeStrings = line.Split(' ');
+                        var edgeFrom = int.Parse(edgeStrings[0]);
+                        var edgeTo = int.Parse(edgeStrings[1]);
+                        var weight = double.Parse(edgeStrings[2]);
+                        edges.Add(new Edge(edgeFrom, edgeTo, weight));
+                        maxVertexIndex = Math.Max(maxVertexIndex, edgeFrom);
+                        maxVertexIndex = Math.Max(maxVertexIndex, edgeTo);
                     }
                     sr.Close();
 
-                    return new Graph(vertices.ToArray(), neighborsCount.ToArray());
+                    return new Graph(edges, maxVertexIndex + 1);
                 }
             }
             catch (Exception e)
@@ -50,6 +43,28 @@ namespace TSP.Core.Helpers
 
                 return null;
             }
+        }
+
+        public static bool WriteTspResultToFile(IEnumerable<Edge> tspEdges, int cost, string path)
+        {
+            try
+            {
+                using (var writetext = new StreamWriter(path))
+                {
+                    foreach (var edge in tspEdges)
+                        writetext.WriteLine($"{edge.From} {edge.To} {edge.Weight}");
+                    writetext.WriteLine($"Cost {cost}");
+                }
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(@"Podczas przetwarzania pliku z danymi wystapił błąd:");
+                Console.WriteLine(e.Message);
+
+                return false;
+            }
+
         }
     }
 }
