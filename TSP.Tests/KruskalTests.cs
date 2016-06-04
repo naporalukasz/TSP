@@ -15,49 +15,23 @@ namespace TSP.Tests
         [Test]
         public void Test()
         {
-            var list = new List<Edge>()
-            {
-                new Edge(){ From=0,To=1,Weight=0.1 },
-                new Edge(){ From=0,To=2,Weight=0.1 },
-                new Edge(){ From=0,To=3,Weight=0.1 },
-                new Edge(){ From=1,To=2,Weight=0.3 },
-                new Edge(){ From=1,To=3,Weight=0.3 },
-                new Edge(){ From=2,To=3,Weight=0.3 }
-            };
-
             var list2 = new List<Edge>()
             {
-                new Edge(){ From=0,To=2,Weight=1 },
-                new Edge(){ From=1,To=2,Weight=1 },
-                new Edge(){ From=2,To=4,Weight=1 },
-                new Edge(){ From=2,To=3,Weight=1 },
-                new Edge(){ From=0,To=1,Weight=1 },
-                new Edge(){ From=0,To=3,Weight=2 },
-                new Edge(){ From=0,To=4,Weight=1 },
-                new Edge(){ From=1,To=3,Weight=1 },
-                new Edge(){ From=1,To=4,Weight=2 },
-                new Edge(){ From=2,To=3,Weight=1 },
-                new Edge(){ From=3,To=4,Weight=1 },
+                new Edge(){ From=0,To=1,Weight=7 },
+                new Edge(){ From=0,To=3,Weight=5 },
+                new Edge(){ From=1,To=2,Weight=8 },
+                new Edge(){ From=1,To=4,Weight=7 },
+                new Edge(){ From=1,To=3,Weight=7 },
+                new Edge(){ From=2,To=4,Weight=5 },
+                new Edge(){ From=3,To=5,Weight=6 },
+                new Edge(){ From=3,To=4,Weight=15 },
+                new Edge(){ From=4,To=5,Weight=8 },
+                new Edge(){ From=5,To=6,Weight=11 },
+                new Edge(){ From=4,To=6,Weight=9 }
             };
-
-            var tmp = new Graph(list2, 5);
-            var Kruskal = new KruskalAlgorithm();
-            var Euler = new EulerPathFinder();
-            var MinimalMatching = new MinimalMatching();
-            var kruskal = Kruskal.CalculateMst(tmp);
-
-            var minimal = MinimalMatching.FindMinimalMatching(kruskal, tmp);
-
-            var duplicatedEdgesList = new List<Edge>();
-            foreach (var edge in kruskal.Edges)
-            {
-                duplicatedEdgesList.Add(edge);
-                duplicatedEdgesList.Add(new Edge() { To = edge.From, From = edge.To, Weight = edge.Weight });
-            }
-            var duplicatedEdgesGraph = new Graph { Edges = new List<Edge>(duplicatedEdgesList) };
-            var eulerPath = Euler.FindPath(duplicatedEdgesGraph);
-
-            var a = 1;
+            var graph = new Graph(list2, 7);
+            var kruskalAlgorithm = new KruskalAlgorithm();
+            var kruskalResult = kruskalAlgorithm.CalculateMst(graph);
         }
     }
 }
