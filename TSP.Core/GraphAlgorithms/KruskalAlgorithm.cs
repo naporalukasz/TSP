@@ -37,7 +37,7 @@ namespace TSP.Core.GraphAlgorithms
                     sets[edge.To] = processedEdges;
                 }
             }
-            return new Graph(result);
+            return new Graph(result,graph.VerticesCount);
         }
     }
 

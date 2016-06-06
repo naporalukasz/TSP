@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TSP.Core;
-using TSP.Core.GraphAlgorithms;
-using TSP.Core.Model;
+//using TSP.Core;
+//using TSP.Core.GraphAlgorithms;
+//using TSP.Core.Model;
 
 namespace TSP
 {

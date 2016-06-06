@@ -40,7 +40,7 @@ namespace TSP.Tests
                 new Edge { From=4,To=5,Weight=22 },
 
             };
-            var graph = new Graph(edges, 5);
+            var graph = new Graph(edges, 6);
             var kruskalAlgorithm = new KruskalAlgorithm();
             var eulerAlgorithm = new EulerPathFinder();
             var graphVisitor = new GraphVisitor();

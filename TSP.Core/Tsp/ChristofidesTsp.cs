@@ -1,5 +1,6 @@
 ﻿using TSP.Core.GraphAlgorithms;
 using TSP.Core.Model;
+using System.Linq;
 
 namespace TSP.Core.Tsp
 {
@@ -7,15 +8,15 @@ namespace TSP.Core.Tsp
     {
         private readonly IKruskalAlgorithm kruskalAlgorithm;
         private readonly IMinimalMatching minimalMatching;
-        //private readonly IEulerPathFinder eulerPathFinder;
-        //private readonly IGraphVisitor graphVisitor;
+        private readonly IEulerPathFinder eulerPathFinder;
+        private readonly IGraphVisitor graphVisitor;
 
-        public ChristofidesTsp(IKruskalAlgorithm kruskalAlgorithm,IMinimalMatching minimalMatching)
+        public ChristofidesTsp(IKruskalAlgorithm kruskalAlgorithm,IMinimalMatching minimalMatching, IEulerPathFinder eulerPathFinder, IGraphVisitor graphVisitor)
         {
             this.kruskalAlgorithm = kruskalAlgorithm;
             this.minimalMatching = minimalMatching;
-            //this.eulerPathFinder = eulerPathFinder;
-            //this.graphVisitor = graphVisitor;
+            this.eulerPathFinder = eulerPathFinder;
+            this.graphVisitor = graphVisitor;
         }
 
         public double Calculate(Graph inputGraph)
@@ -24,14 +25,23 @@ namespace TSP.Core.Tsp
 
             var matching = minimalMatching.FindMinimalMatching(mst, inputGraph);
 
+            var eulerPath = eulerPathFinder.FindPath(matching);
+            var tspPath = graphVisitor.Visit(inputGraph, eulerPath);
+            var cost = tspPath.Edges.Sum(x => x.Weight);
 
-           
-            return 0;
+            return cost;
         }
 
         public Graph Calculate(Graph inputGraph, out double cost)
         {
-            throw new System.NotImplementedException();
+            var mst = kruskalAlgorithm.CalculateMst(inputGraph);
+
+            var matching = minimalMatching.FindMinimalMatching(mst, inputGraph);
+
+            var eulerPath = eulerPathFinder.FindPath(matching);
+            var tspPath = graphVisitor.Visit(inputGraph, eulerPath);
+             cost = tspPath.Edges.Sum(x => x.Weight);
+            return tspPath;
         }
     }
 }
