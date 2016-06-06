@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using TSP.Core.GraphAlgorithms;
-using TSP.Core.Model;
 using TSP.Core.Tsp;
 
 namespace TSP.Tests
@@ -15,32 +9,9 @@ namespace TSP.Tests
     {
         [Test]
         // example https://www.math.ku.edu/~jmartin/courses/math105-F11/Lectures/chapter6-part3.pdf
-        public void TwoApproxTspTest()
+        public void TwoApproxTspTest1()
         {
-            var edges = new List<Edge>()
-            {
-                new Edge { From=0,To=1,Weight=45 },
-                new Edge { From=0,To=2,Weight=40 },
-                new Edge { From=0,To=3,Weight=92 },
-                new Edge { From=0,To=4,Weight=71 },
-                new Edge { From=0,To=5,Weight=67 },
-
-                new Edge { From=1,To=2,Weight=20 },
-                new Edge { From=1,To=3,Weight=50 },
-                new Edge { From=1,To=4,Weight=42 },
-                new Edge { From=1,To=5,Weight=54 },
-
-                new Edge { From=2,To=3,Weight=54 },
-                new Edge { From=2,To=4,Weight=32 },
-                new Edge { From=2,To=5,Weight=36 },
-
-                new Edge { From=3,To=4,Weight=36 },
-                new Edge { From=3,To=5,Weight=58 },
-
-                new Edge { From=4,To=5,Weight=22 },
-
-            };
-            var graph = new Graph(edges, 6);
+            var graph = TspTestCases.TestCase1();
             var kruskalAlgorithm = new KruskalAlgorithm();
             var eulerAlgorithm = new EulerPathFinder();
             var graphVisitor = new GraphVisitor();
@@ -48,6 +19,58 @@ namespace TSP.Tests
             double cost;
             var result = algorithm.Calculate(graph, out cost);
             Assert.AreEqual(cost, 274);
+        }
+
+        [Test]
+        public void TwoApproxTspTest2()
+        {
+            var graph = TspTestCases.TestCase2();
+            var kruskalAlgorithm = new KruskalAlgorithm();
+            var eulerAlgorithm = new EulerPathFinder();
+            var graphVisitor = new GraphVisitor();
+            var algorithm = new TwoApproxTsp(kruskalAlgorithm, eulerAlgorithm, graphVisitor);
+            double cost;
+            var result = algorithm.Calculate(graph, out cost);
+            Assert.AreEqual(cost, 14.2853825);
+        }
+
+        [Test]
+        public void TwoApproxTspTest3()
+        {
+            var graph = TspTestCases.TestCase3();
+            var kruskalAlgorithm = new KruskalAlgorithm();
+            var eulerAlgorithm = new EulerPathFinder();
+            var graphVisitor = new GraphVisitor();
+            var algorithm = new TwoApproxTsp(kruskalAlgorithm, eulerAlgorithm, graphVisitor);
+            double cost;
+            var result = algorithm.Calculate(graph, out cost);
+            Assert.AreEqual(cost, 1112);
+        }
+
+        [Test]
+        public void TwoApproxTspTest4()
+        {
+            var graph = TspTestCases.TestCase4();
+            var kruskalAlgorithm = new KruskalAlgorithm();
+            var eulerAlgorithm = new EulerPathFinder();
+            var graphVisitor = new GraphVisitor();
+            var algorithm = new TwoApproxTsp(kruskalAlgorithm, eulerAlgorithm, graphVisitor);
+            double cost;
+            var result = algorithm.Calculate(graph, out cost);
+            Assert.AreEqual(cost, 933);
+        }
+
+        [Test]
+        public void TwoApproxTspTest5()
+        {
+            var graph = TspTestCases.TestCase5();
+            var kruskalAlgorithm = new KruskalAlgorithm();
+            var eulerAlgorithm = new EulerPathFinder();
+            var graphVisitor = new GraphVisitor();
+            var algorithm = new TwoApproxTsp(kruskalAlgorithm, eulerAlgorithm, graphVisitor);
+            double cost;
+            var result = algorithm.Calculate(graph, out cost);
+            Assert.AreEqual(cost, 43974);
         }
     }
 }

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\ConsoleProcessing.cs" />
+    <Compile Include="Helpers\GraphFactory.cs" />
     <Compile Include="TspAlgorithmFactory.cs" />
     <Compile Include="Tsp\ChristofidesTsp.cs" />
     <Compile Include="Model\Edge.cs" />
