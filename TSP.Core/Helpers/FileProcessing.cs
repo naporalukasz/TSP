@@ -8,13 +8,14 @@ namespace TSP.Core.Helpers
 {
     public static class FileProcessing
     {
-        public static Graph ReadGraphFromFile(string path)
+        public static Graph ReadGraphFromFile(string path, out AlgorithmType algorithmType)
         {
             try
             {
                 using (var sr = new StreamReader(path))
                 {
                     var edges = new List<Edge>();
+                    algorithmType = GetAlgorithmType(sr);
                     var maxVertexIndex = 0;
                     string line;
 
@@ -41,17 +42,28 @@ namespace TSP.Core.Helpers
                 Console.WriteLine(@"Podczas przetwarzania pliku z danymi wystapił błąd:");
                 Console.WriteLine(e.Message);
 
+                algorithmType = AlgorithmType.TwoApprox;
                 return null;
             }
         }
 
-        public static bool WriteTspResultToFile(IEnumerable<Edge> tspEdges, int cost, string path)
+        private static AlgorithmType GetAlgorithmType(StreamReader streamReader)
+        {
+            var algorithmNumberString = streamReader.ReadLine();
+            var algorithmNumber = 0;
+            if (algorithmNumberString != null)
+                algorithmNumber = int.Parse(algorithmNumberString);
+            return (AlgorithmType)algorithmNumber;
+        }
+
+        public static bool WriteTspResultToFile(Graph graph, double cost, string path)
         {
             try
             {
                 using (var writetext = new StreamWriter(path))
                 {
-                    foreach (var edge in tspEdges)
+                    writetext.WriteLine($"{graph.VerticesCount} {graph.Edges.Count}");
+                    foreach (var edge in graph.Edges)
                         writetext.WriteLine($"{edge.From} {edge.To} {edge.Weight}");
                     writetext.WriteLine($"Cost {cost}");
                 }

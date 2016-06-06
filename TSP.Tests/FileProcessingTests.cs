@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using TSP.Core;
 using TSP.Core.Helpers;
 using TSP.Core.Model;
 
@@ -35,12 +36,14 @@ namespace TSP.Tests
                 new Edge { From=7,To=8,Weight=1 },
                 new Edge { From=8,To=5,Weight=1 },
             };
-            var graph = FileProcessing.ReadGraphFromFile("..//..//test.txt");
+            AlgorithmType algorithmType;
+            var graph = FileProcessing.ReadGraphFromFile("..//..//test.txt", out algorithmType);
             for (var i = 0; i < edges.Count; i++)
             {
                 Assert.AreEqual(edges[i].From, graph.Edges[i].From);
                 Assert.AreEqual(edges[i].To, graph.Edges[i].To);
             }
+            Assert.AreEqual(algorithmType, AlgorithmType.TwoApprox);
         }
 
         [Test]
@@ -66,7 +69,8 @@ namespace TSP.Tests
                 new Edge { From=7,To=8,Weight=1 },
                 new Edge { From=8,To=5,Weight=1 },
             };
-            var result = FileProcessing.WriteTspResultToFile(edges, 1000, "testWrite.txt");
+            var graph = new Graph(edges, 9);
+            var result = FileProcessing.WriteTspResultToFile(graph, 1000, "testWrite.txt");
             Assert.IsTrue(result);
         }
     }

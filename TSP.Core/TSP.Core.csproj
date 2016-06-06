@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\ConsoleProcessing.cs" />
+    <Compile Include="TspAlgorithmFactory.cs" />
     <Compile Include="Tsp\ChristofidesTsp.cs" />
     <Compile Include="Model\Edge.cs" />
     <Compile Include="Helpers\EdgeComparer.cs" />

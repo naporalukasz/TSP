@@ -25,7 +25,7 @@ namespace TSP.Core.GraphAlgorithms
 
             var lastEdge = originalGraph.Edges.Find(e => e.From == verticesList.First() && e.To == verticesList.Last()) ??
                            originalGraph.Edges.Find(e => e.To == verticesList.First() && e.From == verticesList.Last());
-            hamiltionianCycleGraph.Edges.Add(lastEdge.DeepCopy());
+            if (lastEdge != null) hamiltionianCycleGraph.Edges.Add(lastEdge.DeepCopy());
 
             hamiltionianCycleGraph.VerticesCount = originalGraph.VerticesCount;
             return hamiltionianCycleGraph;
