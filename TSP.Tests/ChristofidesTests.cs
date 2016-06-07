@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using TSP.Core.GraphAlgorithms;
+using TSP.Core.Helpers;
 using TSP.Core.Tsp;
 
 namespace TSP.Tests
@@ -18,6 +19,7 @@ namespace TSP.Tests
         public void ChristofidesTspTest1()
         {
             var graph = TspTestCases.TestCase1();
+            FileProcessing.WriteTspResultToFile(graph, 0, "test1_christofides.txt");
             var kruskalAlgorithm = new KruskalAlgorithm();
             var eulerAlgorithm = new EulerPathFinder();
             var minimal = new MinimalMatching();
@@ -26,12 +28,15 @@ namespace TSP.Tests
             double cost;
             var result = algorithm.Calculate(graph, out cost);
             Assert.AreEqual(cost, 244);
+            FileProcessing.WriteTspResultToFile(result, cost, "test1_christofides.Out.txt");
+
         }
         // https://people.sc.fsu.edu/~jburkardt/datasets/tsp/tsp.html
         [Test]
         public void ChristofidesTspTest2()
         {
             var graph = TspTestCases.TestCase2();
+            FileProcessing.WriteTspResultToFile(graph, 0, "test2_christofides.txt");
             var kruskalAlgorithm = new KruskalAlgorithm();
             var eulerAlgorithm = new EulerPathFinder();
             var minimal = new MinimalMatching();
@@ -40,12 +45,15 @@ namespace TSP.Tests
             double cost;
             var result = algorithm.Calculate(graph, out cost);
             Assert.AreEqual(cost, 14.2853825);
+            FileProcessing.WriteTspResultToFile(result, cost, "test2_christofides.Out.txt");
+
         }
 
         [Test]
         public void ChristofidesTspTest3()
         {
             var graph = TspTestCases.TestCase3();
+            FileProcessing.WriteTspResultToFile(graph, 0, "test3_christofides.txt");
             var kruskalAlgorithm = new KruskalAlgorithm();
             var eulerAlgorithm = new EulerPathFinder();
             var minimal = new MinimalMatching();
@@ -54,12 +62,15 @@ namespace TSP.Tests
             double cost;
             var result = algorithm.Calculate(graph, out cost);
             Assert.AreEqual(cost, 1118);
+            FileProcessing.WriteTspResultToFile(result, cost, "test3_christofides.Out.txt");
+
         }
 
         [Test]
         public void ChristofidesTspTest4()
         {
             var graph = TspTestCases.TestCase4();
+            FileProcessing.WriteTspResultToFile(graph, 0, "test4_christofides.txt");
             var kruskalAlgorithm = new KruskalAlgorithm();
             var eulerAlgorithm = new EulerPathFinder();
             var minimal = new MinimalMatching();
@@ -68,11 +79,14 @@ namespace TSP.Tests
             double cost;
             var result = algorithm.Calculate(graph, out cost);
             Assert.AreEqual(cost, 769);
+            FileProcessing.WriteTspResultToFile(result, cost, "test4_christofides.Out.txt");
+
         }
         [Test]
         public void ChristofidesTspTest5()
         {
             var graph = TspTestCases.TestCase5();
+            FileProcessing.WriteTspResultToFile(graph, 0, "test5_christofides.txt");
             var kruskalAlgorithm = new KruskalAlgorithm();
             var eulerAlgorithm = new EulerPathFinder();
             var minimal = new MinimalMatching();
@@ -81,12 +95,15 @@ namespace TSP.Tests
             double cost;
             var result = algorithm.Calculate(graph, out cost);
             Assert.AreEqual(cost, 37715);
+            FileProcessing.WriteTspResultToFile(result, cost, "test5_christofides.Out.txt");
+
         }
 
         [Test]
         public void ChristofidesTspTest6()
         {
             var graph = TspTestCases.TestCase6();
+            FileProcessing.WriteTspResultToFile(graph, 0, "test6_christofides.txt");
             var kruskalAlgorithm = new KruskalAlgorithm();
             var eulerAlgorithm = new EulerPathFinder();
             var minimal = new MinimalMatching();
@@ -95,6 +112,8 @@ namespace TSP.Tests
             double cost;
             var result = algorithm.Calculate(graph, out cost);
             Assert.AreEqual(cost, 1386);
+            FileProcessing.WriteTspResultToFile(result, cost, "test6_christofides.Out.txt");
+
         }
 
     }
