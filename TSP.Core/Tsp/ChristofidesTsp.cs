@@ -22,9 +22,7 @@ namespace TSP.Core.Tsp
         public Graph Calculate(Graph inputGraph, out double cost)
         {
             var mst = kruskalAlgorithm.CalculateMst(inputGraph);
-
             var matching = minimalMatching.FindMinimalMatching(mst, inputGraph);
-
             var eulerPath = eulerPathFinder.FindPath(matching);
             var tspPath = graphVisitor.Visit(inputGraph, eulerPath);
              cost = tspPath.Edges.Sum(x => x.Weight);
