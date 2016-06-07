@@ -14,6 +14,8 @@ namespace TSP.Core.GraphAlgorithms
             {
                 if (!verticesSet.Contains(edge.To))
                     verticesSet.Add(edge.To);
+                if (!verticesSet.Contains(edge.From))
+                    verticesSet.Add(edge.From);
             }
             var verticesList = verticesSet.ToList();
             for (var i = 0; i < verticesList.Count - 1; i++)

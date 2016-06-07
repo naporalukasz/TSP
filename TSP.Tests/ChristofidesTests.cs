@@ -27,7 +27,7 @@ namespace TSP.Tests
             var algorithm = new ChristofidesTsp(kruskalAlgorithm, minimal, eulerAlgorithm, graphVisitor);
             double cost;
             var result = algorithm.Calculate(graph, out cost);
-            Assert.AreEqual(cost, 244);
+            Assert.AreEqual(cost, 290);
             FileProcessing.WriteTspResultToFile(result, cost, "test1_christofides.Out.txt");
 
         }
@@ -61,7 +61,7 @@ namespace TSP.Tests
             var algorithm = new ChristofidesTsp(kruskalAlgorithm, minimal, eulerAlgorithm, graphVisitor);
             double cost;
             var result = algorithm.Calculate(graph, out cost);
-            Assert.AreEqual(cost, 1118);
+            Assert.AreEqual(cost, 1192);
             FileProcessing.WriteTspResultToFile(result, cost, "test3_christofides.Out.txt");
 
         }
@@ -78,7 +78,7 @@ namespace TSP.Tests
             var algorithm = new ChristofidesTsp(kruskalAlgorithm, minimal, eulerAlgorithm, graphVisitor);
             double cost;
             var result = algorithm.Calculate(graph, out cost);
-            Assert.AreEqual(cost, 769);
+            Assert.AreEqual(cost,848);
             FileProcessing.WriteTspResultToFile(result, cost, "test4_christofides.Out.txt");
 
         }
@@ -94,7 +94,7 @@ namespace TSP.Tests
             var algorithm = new ChristofidesTsp(kruskalAlgorithm, minimal, eulerAlgorithm, graphVisitor);
             double cost;
             var result = algorithm.Calculate(graph, out cost);
-            Assert.AreEqual(cost, 37715);
+            Assert.AreEqual(cost, 41991);
             FileProcessing.WriteTspResultToFile(result, cost, "test5_christofides.Out.txt");
 
         }
@@ -111,7 +111,7 @@ namespace TSP.Tests
             var algorithm = new ChristofidesTsp(kruskalAlgorithm, minimal, eulerAlgorithm, graphVisitor);
             double cost;
             var result = algorithm.Calculate(graph, out cost);
-            Assert.AreEqual(cost, 1386);
+            Assert.AreEqual(cost, 2257);
             FileProcessing.WriteTspResultToFile(result, cost, "test6_christofides.Out.txt");
 
         }
