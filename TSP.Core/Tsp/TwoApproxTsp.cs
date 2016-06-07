@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using TSP.Core.GraphAlgorithms;
+using TSP.Core.Helpers;
 using TSP.Core.Model;
 
 namespace TSP.Core.Tsp

@@ -20,7 +20,7 @@ namespace TSP.Tests
             var result = algorithm.Calculate(graph, out cost);
             Assert.AreEqual(cost, 274);
         }
-
+        // https://people.sc.fsu.edu/~jburkardt/datasets/tsp/tsp.html
         [Test]
         public void TwoApproxTspTest2()
         {
@@ -71,6 +71,19 @@ namespace TSP.Tests
             double cost;
             var result = algorithm.Calculate(graph, out cost);
             Assert.AreEqual(cost, 43974);
+        }
+
+        [Test]
+        public void TwoApproxTspTest6()
+        {
+            var graph = TspTestCases.TestCase6();
+            var kruskalAlgorithm = new KruskalAlgorithm();
+            var eulerAlgorithm = new EulerPathFinder();
+            var graphVisitor = new GraphVisitor();
+            var algorithm = new TwoApproxTsp(kruskalAlgorithm, eulerAlgorithm, graphVisitor);
+            double cost;
+            var result = algorithm.Calculate(graph, out cost);
+            Assert.AreEqual(cost, 2352);
         }
     }
 }

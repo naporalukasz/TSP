@@ -19,19 +19,6 @@ namespace TSP.Core.Tsp
             this.graphVisitor = graphVisitor;
         }
 
-        public double Calculate(Graph inputGraph)
-        {
-            var mst = kruskalAlgorithm.CalculateMst(inputGraph);
-
-            var matching = minimalMatching.FindMinimalMatching(mst, inputGraph);
-
-            var eulerPath = eulerPathFinder.FindPath(matching);
-            var tspPath = graphVisitor.Visit(inputGraph, eulerPath);
-            var cost = tspPath.Edges.Sum(x => x.Weight);
-
-            return cost;
-        }
-
         public Graph Calculate(Graph inputGraph, out double cost)
         {
             var mst = kruskalAlgorithm.CalculateMst(inputGraph);
